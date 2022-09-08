@@ -2,6 +2,18 @@ import * as React from "react";
 import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import MuiDrawer from "@mui/material/Drawer";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import ListSubheader from "@mui/material/ListSubheader";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import PeopleIcon from "@mui/icons-material/People";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import BarChartIcon from "@mui/icons-material/BarChart";
+import LayersIcon from "@mui/icons-material/Layers";
+import SearchIcon from "@mui/icons-material/Search";
+import AssignmentIcon from "@mui/icons-material/Assignment";
+import Search from "./Search";
 import Box from "@mui/material/Box";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -14,7 +26,6 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Link from "@mui/material/Link";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import { mainListItems, secondaryListItems } from "./ListItems";
 import Chart from "./Chart";
 import Orders from "./Orders";
@@ -32,7 +43,7 @@ function Copyright(props) {
     >
       {"Copyright © "}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        Apollo.io
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -74,9 +85,10 @@ const NavItem = styled(Typography)({
 
 const mdTheme = createTheme();
 
-function DashboardContent() {
+function DashboardContent({ pData }) {
   const open = true;
   // React.useEffect(() => {}, [props.data]);
+  const [openLocation, setOpenLocation] = React.useState(false);
 
   return (
     <ThemeProvider theme={mdTheme}>
@@ -123,7 +135,51 @@ function DashboardContent() {
           ></Toolbar>
           <Divider />
           <List component="nav">
-            {mainListItems}
+            <ListItemButton onClick={() => setOpenLocation(!openLocation)}>
+              <ListItemIcon>
+                <SearchIcon />
+              </ListItemIcon>
+              <ListItemText primary="Location" />
+              <ListItemIcon
+                sx={{ display: "flex", justifyContent: "flex-end" }}
+              >
+                <ArrowDropDownIcon />
+              </ListItemIcon>
+            </ListItemButton>
+            {openLocation ? (
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <Search />
+              </Box>
+            ) : null}
+            <ListItemButton>
+              <ListItemIcon>
+                <ShoppingCartIcon />
+              </ListItemIcon>
+              <ListItemText primary="Orders" />
+            </ListItemButton>
+            <ListItemButton>
+              <ListItemIcon>
+                <PeopleIcon />
+              </ListItemIcon>
+              <ListItemText primary="Customers" />
+            </ListItemButton>
+            <ListItemButton>
+              <ListItemIcon>
+                <BarChartIcon />
+              </ListItemIcon>
+              <ListItemText primary="Reports" />
+            </ListItemButton>
+            <ListItemButton>
+              <ListItemIcon>
+                <LayersIcon />
+              </ListItemIcon>
+              <ListItemText primary="Integrations" />
+            </ListItemButton>
             <Divider sx={{ my: 1 }} />
             {secondaryListItems}
           </List>
@@ -159,7 +215,7 @@ function DashboardContent() {
               {/* Recent Orders */}
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  <Orders />
+                  <Orders pData={pData} />
                 </Paper>
               </Grid>
             </Grid>
@@ -171,6 +227,6 @@ function DashboardContent() {
   );
 }
 
-export default function Dashboard() {
-  return <DashboardContent />;
+export default function Dashboard({ pData }) {
+  return <DashboardContent pData={pData} />;
 }

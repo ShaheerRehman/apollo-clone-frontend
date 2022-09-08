@@ -1,18 +1,18 @@
-import { useContext } from "react";
 import React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import { DataContext } from "../App";
 
 function preventDefault(event) {
   event.preventDefault();
 }
 
-export default function Orders() {
-  const data = useContext(DataContext);
+export default function Orders({ pData }) {
+  console.log("data");
+  console.log(pData);
+  console.log("data");
   return (
     <React.Fragment>
       <Table size="small">
@@ -28,12 +28,11 @@ export default function Orders() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data &&
-            data?.map((item) => (
+          {pData &&
+            pData.map((item) => (
               <TableRow key={item.id}>
                 <TableCell>{item.name}</TableCell>
                 <TableCell>{item.job}</TableCell>
-                {/* company */}
 
                 <TableCell>{item.companyName.name}</TableCell>
                 <TableCell>{item.location}</TableCell>

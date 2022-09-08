@@ -3,30 +3,44 @@ import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Autocomplete from "@mui/material/Autocomplete";
 import { DataContext } from "../App";
+import { useNavigate } from "react-router-dom";
 
 export default function FreeSolo() {
-  const data = React.useContext(DataContext);
+  const navigate = useNavigate();
+  const goSearch = () => {
+    navigate("/search/?search=" + toSearch);
+    window.location.reload();
+  };
+  const contextData = React.useContext(DataContext);
   const [toSearch, setToSearch] = React.useState();
   return (
-    <Stack sx={{ width: 300 }}>
-      {/* {console.log(toSearch)} */}
+    <Stack sx={{ width: 200 }}>
       <Autocomplete
+        // sx={{ height: 30 }}
         freeSolo
-        id="free-solo-2-demo"
         disableClearable
-        options={data && data.map((option) => option.location)}
+        options={contextData && contextData.map((option) => option.location)}
         renderInput={(params) => (
-          <TextField
-            {...params}
-            label="Search input"
-            onChange={(e) => {
-              setToSearch(e.target.value);
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              goSearch();
             }}
-            InputProps={{
-              ...params.InputProps,
-              type: "search",
-            }}
-          />
+          >
+            <TextField
+              {...params}
+              // sx={{ height: 4 }}
+              size="small"
+              label="Search Location"
+              onChange={(e) => setToSearch(e.target.value)}
+              onSelect={(e) => setToSearch(e.target.value)}
+              // InputLabelProps={{ style: { fontSize: 15 } }}
+              InputProps={{
+                ...params.InputProps,
+                type: "search",
+              }}
+            />
+          </form>
         )}
       />
     </Stack>
