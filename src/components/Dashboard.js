@@ -76,6 +76,7 @@ const mdTheme = createTheme();
 
 function DashboardContent() {
   const open = true;
+  // React.useEffect(() => {}, [props.data]);
 
   return (
     <ThemeProvider theme={mdTheme}>
