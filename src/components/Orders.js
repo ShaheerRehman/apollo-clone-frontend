@@ -6,9 +6,6 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 
 export default function Orders({ pData }) {
-  console.log("data");
-  console.log(pData);
-  console.log("data");
   return (
     <React.Fragment>
       <Table size="small">

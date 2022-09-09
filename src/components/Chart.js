@@ -1,10 +1,7 @@
 import * as React from "react";
-import { useTheme } from "@mui/material/styles";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import { Box, Typography, Container, Button } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import styled from "@emotion/styled";
-import { fontSize } from "@mui/system";
-import { red } from "@mui/material/colors";
 
 // Generate Sales Data
 
@@ -32,11 +29,8 @@ const Options = styled(Typography)({
 });
 
 export default function Chart() {
-  const theme = useTheme();
-
   return (
     <React.Fragment>
-      {/* <Container maxWidth="sm" sx={{ marginLeft: 0 }}> */}
       <Box
         sx={{
           display: "flex",
@@ -49,7 +43,6 @@ export default function Chart() {
             display: "flex",
             justifyContent: "space-between",
             flexDirection: "column",
-            // backgroundColor: "red",
           }}
         >
           <Title>Need more pipeline? Upgrade now for advanced features.</Title>
@@ -95,7 +88,6 @@ export default function Chart() {
           View Plans
         </Button>
       </Box>
-      {/* </Container> */}
     </React.Fragment>
   );
 }

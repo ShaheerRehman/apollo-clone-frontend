@@ -7,7 +7,6 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListAltOutlinedIcon from "@mui/icons-material/ListAltOutlined";
 import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined";
-import ListItemText from "@mui/material/ListItemText";
 import SearchIcon from "@mui/icons-material/Search";
 import Box from "@mui/material/Box";
 import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
@@ -18,7 +17,6 @@ import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
-import Badge from "@mui/material/Badge";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
@@ -290,7 +288,6 @@ function DashboardContent({ pData }) {
               </SearchIconWrapper>
 
               <StyledInputBase
-                // onChange={(e) => setData({ search: e.target.value })}
                 placeholder="Search…"
                 inputProps={{ "aria-label": "search" }}
               />
@@ -301,20 +298,7 @@ function DashboardContent({ pData }) {
             <Divider sx={{ my: 1 }} />
 
             <Job />
-            {/* <ListItemButton> */}
-            {/* <ListItemIcon>
-                <ShoppingCartIcon />
-              </ListItemIcon>
-              <ListItemText primary="Orders" />
-            </ListItemButton>
-            <ListItemButton>
-              <ListItemIcon>
-                <LayersIcon />
-              </ListItemIcon>
-              <ListItemText primary="Integrations" />
-            </ListItemButton>*/}
             <Divider sx={{ my: 1 }} />
-            {/* {secondaryListItems}  */}
           </List>
         </Drawer>
         <Box
