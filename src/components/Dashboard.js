@@ -4,29 +4,37 @@ import CssBaseline from "@mui/material/CssBaseline";
 import MuiDrawer from "@mui/material/Drawer";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import ListItemButton from "@mui/material/ListItemButton";
+import SavedSearchOutlinedIcon from "@mui/icons-material/SavedSearchOutlined";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import ListItemIcon from "@mui/material/ListItemIcon";
+import ListAltOutlinedIcon from "@mui/icons-material/ListAltOutlined";
+import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined";
 import ListItemText from "@mui/material/ListItemText";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import SearchIcon from "@mui/icons-material/Search";
 import Search from "./Search";
 import Box from "@mui/material/Box";
+import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
+import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 import Badge from "@mui/material/Badge";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
+import ApartmentOutlinedIcon from "@mui/icons-material/ApartmentOutlined";
 import Link from "@mui/material/Link";
 // import { secondaryListItems } from "./ListItems";
 import Chart from "./Chart";
 import Orders from "./Orders";
 import index from "../assets/images/index.svg";
-import { alpha, Avatar, InputBase } from "@mui/material";
+import { alpha, Avatar, Button, InputBase } from "@mui/material";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import { useNavigate } from "react-router-dom";
 
 function Copyright(props) {
@@ -79,14 +87,16 @@ const NavItem = styled(Typography)({
   marginLeft: "30px",
   fontSize: "15px",
   fontWeight: "bold",
+  cursor: "pointer",
 });
 
 const BottomNavItem = styled(Typography)(({ theme }) => ({
   marginRight: "30px",
   // color: "black" + "00",
-  color: alpha(theme.palette.common.black, 0.6),
-  fontSize: "15px",
+  color: alpha(theme.palette.common.black, 0.5),
+  fontSize: "14px",
   fontWeight: "bold",
+  cursor: "pointer",
 }));
 
 const SearchDiv = styled("div")(({ theme }) => ({
@@ -156,10 +166,10 @@ function DashboardContent({ pData }) {
             />
             <Box sx={{ flexGrow: 1 }}>
               <Box sx={{ display: "flex" }}>
-                <NavItem
-                  style={{ cursor: "pointer" }}
-                  onClick={() => navigate("/")}
-                >
+                <NavItem onClick={() => navigate("/")}>
+                  <IconButton sx={{ height: 5, width: 34 }}>
+                    <HomeOutlinedIcon sx={{ height: 25 }} />
+                  </IconButton>
                   Home
                 </NavItem>
                 <NavItem
@@ -169,20 +179,48 @@ function DashboardContent({ pData }) {
                     color: "primary.main",
                   }}
                 >
-                  <IconButton sx={{ height: 5, width: 32 }}>
+                  <IconButton sx={{ height: 5, width: 34 }}>
                     <SearchIcon sx={{ height: 25, color: "primary.main" }} />
                   </IconButton>
                   Search
                 </NavItem>
-                <NavItem>Engage</NavItem>
-                <NavItem>Enrich</NavItem>
+                <NavItem>
+                  <IconButton sx={{ height: 5, width: 34 }}>
+                    <SendOutlinedIcon sx={{ height: 25 }} />
+                  </IconButton>
+                  Engage
+                </NavItem>
+                <NavItem>
+                  <IconButton sx={{ height: 5, width: 34 }}>
+                    <AutorenewOutlinedIcon sx={{ height: 25 }} />
+                  </IconButton>
+                  Enrich
+                </NavItem>
               </Box>
             </Box>
-
-            <IconButton color="inherit">
-              <NotificationsNoneOutlinedIcon
-                sx={{ height: "30px", width: "30px" }}
-              />
+            <Button
+              style={{ textTransform: "none", backgroundColor: "#1991EB" }}
+              variant="contained"
+              sx={{
+                width: "auto",
+                height: "auto",
+                minHeight: "32px",
+                backgroundColor: "primary.main",
+                borderRadius: 4,
+                padding: "0px 12px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "14px",
+              }}
+            >
+              Get Unlimited Leads
+            </Button>
+            <IconButton>
+              <NotificationsNoneOutlinedIcon sx={{ height: 25 }} />
+            </IconButton>
+            <IconButton>
+              <SettingsOutlinedIcon sx={{ height: 25 }} />
             </IconButton>
             <Avatar
               sx={{ ml: "15px", height: "30px", width: "30px" }}
@@ -200,10 +238,38 @@ function DashboardContent({ pData }) {
           >
             <Box sx={{ flexGrow: 1 }}>
               <Box sx={{ display: "flex" }}>
-                <BottomNavItem>People</BottomNavItem>
-                <BottomNavItem>Companies</BottomNavItem>
-                <BottomNavItem>Lists</BottomNavItem>
-                <BottomNavItem>Saved Searches</BottomNavItem>
+                <BottomNavItem
+                  sx={{
+                    // display: "flex",
+                    // justifyContent: "center",
+                    color: "primary.main",
+                  }}
+                >
+                  <IconButton sx={{ height: 5, width: 34 }}>
+                    <PeopleAltOutlinedIcon
+                      sx={{ height: 22, color: "primary.main" }}
+                    />
+                  </IconButton>
+                  People
+                </BottomNavItem>
+                <BottomNavItem>
+                  <IconButton sx={{ height: 5, width: 34 }}>
+                    <ApartmentOutlinedIcon sx={{ height: 22 }} />
+                  </IconButton>
+                  Companies
+                </BottomNavItem>
+                <BottomNavItem>
+                  <IconButton sx={{ height: 5, width: 34 }}>
+                    <ListAltOutlinedIcon sx={{ height: 22 }} />
+                  </IconButton>
+                  Lists
+                </BottomNavItem>
+                <BottomNavItem>
+                  <IconButton sx={{ height: 5, width: 34 }}>
+                    <SavedSearchOutlinedIcon sx={{ height: 22 }} />
+                  </IconButton>
+                  Saved Searches
+                </BottomNavItem>
               </Box>
             </Box>
           </Toolbar>
@@ -293,7 +359,8 @@ function DashboardContent({ pData }) {
                     p: 2,
                     display: "flex",
                     flexDirection: "column",
-                    height: 80,
+                    height: "auto",
+                    // height: 80,
                   }}
                 >
                   <Chart />

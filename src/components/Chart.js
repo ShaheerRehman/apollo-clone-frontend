@@ -76,10 +76,12 @@ export default function Chart() {
           </Box>
         </Box>
         <Button
-          color="primary"
+          style={{ textTransform: "none", backgroundColor: "#1991EB" }}
           sx={{
             width: "auto",
-            height: "32px",
+            height: "auto",
+            minHeight: "32px",
+
             backgroundColor: "primary.main",
             borderRadius: "4px",
             padding: "0px 12px",
