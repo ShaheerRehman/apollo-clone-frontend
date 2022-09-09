@@ -47,7 +47,7 @@ function Copyright(props) {
   );
 }
 
-const drawerWidth = 240;
+const drawerWidth = 300;
 
 const AppBar = styled(MuiAppBar)(({ theme }) => ({
   backgroundColor: "white",
@@ -64,6 +64,7 @@ const Drawer = styled(MuiDrawer, {
 })(({ theme }) => ({
   "& .MuiDrawer-paper": {
     position: "relative",
+    marginTop: "32px",
     whiteSpace: "nowrap",
     width: drawerWidth,
     transition: theme.transitions.create("width", {
@@ -76,8 +77,17 @@ const Drawer = styled(MuiDrawer, {
 
 const NavItem = styled(Typography)({
   marginLeft: "30px",
-  fontSize: "17px",
+  fontSize: "15px",
+  fontWeight: "bold",
 });
+
+const BottomNavItem = styled(Typography)(({ theme }) => ({
+  marginRight: "30px",
+  // color: "black" + "00",
+  color: alpha(theme.palette.common.black, 0.6),
+  fontSize: "15px",
+  fontWeight: "bold",
+}));
 
 const SearchDiv = styled("div")(({ theme }) => ({
   position: "relative",
@@ -133,6 +143,7 @@ function DashboardContent({ pData }) {
         <CssBaseline />
         <AppBar position="absolute" open={open}>
           <Toolbar
+            variant="dense"
             sx={{
               pr: "24px", // keep right padding when drawer closed
             }}
@@ -151,24 +162,50 @@ function DashboardContent({ pData }) {
                 >
                   Home
                 </NavItem>
-                <NavItem>Search</NavItem>
+                <NavItem
+                  sx={{
+                    // display: "flex",
+                    // justifyContent: "center",
+                    color: "primary.main",
+                  }}
+                >
+                  <IconButton sx={{ height: 5, width: 32 }}>
+                    <SearchIcon sx={{ height: 25, color: "primary.main" }} />
+                  </IconButton>
+                  Search
+                </NavItem>
                 <NavItem>Engage</NavItem>
                 <NavItem>Enrich</NavItem>
               </Box>
             </Box>
 
             <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsNoneOutlinedIcon
-                  sx={{ height: "30px", width: "30px" }}
-                />
-              </Badge>
+              <NotificationsNoneOutlinedIcon
+                sx={{ height: "30px", width: "30px" }}
+              />
             </IconButton>
             <Avatar
               sx={{ ml: "15px", height: "30px", width: "30px" }}
               alt="Remy Sharp"
               src=""
             />
+          </Toolbar>
+          <Divider />
+
+          <Toolbar
+            variant="dense"
+            sx={{
+              pr: "24px", // keep right padding when drawer closed
+            }}
+          >
+            <Box sx={{ flexGrow: 1 }}>
+              <Box sx={{ display: "flex" }}>
+                <BottomNavItem>People</BottomNavItem>
+                <BottomNavItem>Companies</BottomNavItem>
+                <BottomNavItem>Lists</BottomNavItem>
+                <BottomNavItem>Saved Searches</BottomNavItem>
+              </Box>
+            </Box>
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
@@ -247,7 +284,7 @@ function DashboardContent({ pData }) {
           }}
         >
           <Toolbar />
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+          <Container maxWidth="lg" sx={{ mt: 6, mb: 3 }}>
             <Grid container spacing={3}>
               {/* Chart */}
               <Grid item xs={12}>

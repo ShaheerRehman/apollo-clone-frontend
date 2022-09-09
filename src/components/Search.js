@@ -14,7 +14,7 @@ export default function FreeSolo() {
   const contextData = React.useContext(DataContext);
   const [toSearch, setToSearch] = React.useState();
   return (
-    <Stack sx={{ width: 200 }}>
+    <Stack sx={{ width: 270 }}>
       <Autocomplete
         // sx={{ height: 30 }}
         freeSolo
