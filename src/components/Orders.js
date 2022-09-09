@@ -1,9 +1,15 @@
 import React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
+import MuiTableCell from "@mui/material/TableCell";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import { Divider, styled } from "@mui/material";
+
+const TitleCell = styled(MuiTableCell)({
+  fontSize: "0.65rem",
+});
 
 export default function Orders({ pData }) {
   return (
@@ -11,13 +17,13 @@ export default function Orders({ pData }) {
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell>Title</TableCell>
-            <TableCell>Company</TableCell>
-            <TableCell>Contact Location</TableCell>
-            <TableCell># Employees</TableCell>
-            <TableCell>Email</TableCell>
-            <TableCell align="right">Industry</TableCell>
+            <TitleCell>Name</TitleCell>
+            <TitleCell>Title</TitleCell>
+            <TitleCell>Company</TitleCell>
+            <TitleCell>Contact Location</TitleCell>
+            <TitleCell># Employees</TitleCell>
+            <TitleCell>Email</TitleCell>
+            <TitleCell align="right">Industry</TitleCell>
           </TableRow>
         </TableHead>
         <TableBody>
