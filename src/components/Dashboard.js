@@ -32,6 +32,7 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import { useNavigate } from "react-router-dom";
 import Location from "./Location";
 import Job from "./Job";
+import Company from "./Company";
 
 function Copyright(props) {
   return (
@@ -298,6 +299,8 @@ function DashboardContent({ pData }) {
             <Divider sx={{ my: 1 }} />
 
             <Job />
+            <Divider sx={{ my: 1 }} />
+            <Company />
             <Divider sx={{ my: 1 }} />
           </List>
         </Drawer>

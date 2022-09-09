@@ -8,9 +8,11 @@ export default function FreeSolo({ dataToSearch, data }) {
   const [label, setLabel] = React.useState("");
   React.useEffect(() => {
     if (dataToSearch === "location") {
-      setLabel("Search Location");
+      setLabel("Enter locations...");
     } else if (dataToSearch === "job") {
-      setLabel("Search Job");
+      setLabel("Search for a job title");
+    } else if (dataToSearch === "company") {
+      setLabel("Enter companies...");
     }
   }, [dataToSearch]);
   // if (dataToSearch === "location") {
