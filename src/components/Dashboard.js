@@ -2,17 +2,13 @@ import * as React from "react";
 import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import MuiDrawer from "@mui/material/Drawer";
-import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
-import ListItemButton from "@mui/material/ListItemButton";
 import SavedSearchOutlinedIcon from "@mui/icons-material/SavedSearchOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListAltOutlinedIcon from "@mui/icons-material/ListAltOutlined";
 import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined";
 import ListItemText from "@mui/material/ListItemText";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import SearchIcon from "@mui/icons-material/Search";
-import Search from "./Search";
 import Box from "@mui/material/Box";
 import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
 import MuiAppBar from "@mui/material/AppBar";
@@ -36,6 +32,8 @@ import { alpha, Avatar, Button, InputBase } from "@mui/material";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import { useNavigate } from "react-router-dom";
+import Location from "./Location";
+import Job from "./Job";
 
 function Copyright(props) {
   return (
@@ -145,7 +143,6 @@ const mdTheme = createTheme();
 function DashboardContent({ pData }) {
   const open = true;
   // React.useEffect(() => {}, [props.data]);
-  const [openLocation, setOpenLocation] = React.useState(false);
   const navigate = useNavigate();
   return (
     <ThemeProvider theme={mdTheme}>
@@ -300,27 +297,10 @@ function DashboardContent({ pData }) {
             </SearchDiv>
             <Divider sx={{ my: 1 }} />
 
-            <ListItemButton onClick={() => setOpenLocation(!openLocation)}>
-              <ListItemIcon>
-                <LocationOnOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText primary="Location" />
-              <ListItemIcon
-                sx={{ display: "flex", justifyContent: "flex-end" }}
-              >
-                <ArrowDropDownIcon />
-              </ListItemIcon>
-            </ListItemButton>
-            {openLocation ? (
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                }}
-              >
-                <Search />
-              </Box>
-            ) : null}
+            <Location />
+            <Divider sx={{ my: 1 }} />
+
+            <Job />
             {/* <ListItemButton> */}
             {/* <ListItemIcon>
                 <ShoppingCartIcon />
